@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Autoload</title>
+</head>
+<style>
+
+  iframe{
+    width:100vw;
+    height: 100vh;
+    position: absolute;
+    top:0;left:0;
+    border:none;
+    margin:0;padding:0;
+  }
+
+  iframe .modal{
+    width:500px;
+    height:250px;
+    margin:auto;
+  }
+
+  .modal-wrapper{
+    display: none;
+  }
+
+  .modal-wrapper.show{
+    display: block;
+  }
+</style>
+<body>
+
+  <a href="../modal.html" data-preload="true" data-id="modalId"> Preload This </a>
+
+  <script>
+  
+  (function(){
+
+    // event handling
+    const preloadMe = function(event){
+
+      // have we already loaded it?
+      if(document.getElementById(event.target.dataset.id)) return
+
+      // Otherwise, carry on
+
+      let link = event.target.href;
+      let wrapper = document.createElement('div');
+      wrapper.setAttribute('id', event.target.dataset.id);
+      let iframe = document.createElement('iframe');
+      iframe.setAttribute('src', link);
+      // Get it on the page
+      wrapper.appendChild(iframe);
+      wrapper.classList.add('modal-wrapper');
+      document.body.appendChild(wrapper);
+    
+    }
+
+    const showModal = function(event){
+      event.preventDefault();
+
+      document.getElementById(event.target.dataset.id).classList.add('show')
+    }
+
+
+    // Find all the preload links
+
+    const preloadLinks = document.querySelectorAll('[data-preload="true"]');
+
+    // attach hover event event
+
+    preloadLinks.forEach( pLink => {
+      pLink.addEventListener('mouseover', preloadMe);
+      pLink.addEventListener('click', showModal);
+    })
+
+    // show
+
+
+  }())
+
+  
+  </script>
+  
+</body>
+</html>

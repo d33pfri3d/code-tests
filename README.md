@@ -4,8 +4,8 @@ I've decided to share some of the code tests / challenges that I have been asked
 
 ---
 
-[movie-rating](/movie-rating/) | Zone Digital | FAILED
+[movie-rating](/movie-rating/) | Zone Digital
 
 ---
 
-[Gumroad.com](/gumroad/) | Gumroad | FAILED
+[Gumroad.com](/gumroad/) | Gumroad

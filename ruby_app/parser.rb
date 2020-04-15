@@ -7,4 +7,4 @@ require "smart_pension"
 
 result = Logger::CLI.new.run
 
-exit(result)
+exit result

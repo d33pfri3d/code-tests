@@ -3,6 +3,9 @@
 
 module Logger
   class CLI
+    SUCCESS = 0
+    ERROR = 1
+
     class Error < StandardError; end
 
     def run(args = ARGV)
@@ -11,6 +14,7 @@ module Logger
     rescue Error => e
       warn e.message
       help
+      ERROR
     end
 
     private
@@ -21,6 +25,7 @@ module Logger
       Parser.new(log_path, cache).call
       report = Report.new(cache)
       report.output
+      SUCCESS
     end
 
     def help

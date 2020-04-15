@@ -32,11 +32,6 @@ RSpec.describe Logger::CLI do
         expect(cli.run([])).to eq(1)
       end
 
-      it "outputs error message" do
-        error_message = "Provided a log file path to be parsed!\n"
-        expect { cli.run([]) }.to output(error_message).to_stderr
-      end
-
       it "outputs help message" do
         cli.run(["unknown.log"])
         expect($stdout.string).to include("Usage:")

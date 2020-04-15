@@ -3,10 +3,12 @@
 
 module Logger
   class CLI
+    class Error < StandardError; end
+
     def run(args = ARGV)
       print args
       start(args.first)
-    rescue => e
+    rescue Error => e
       warn e.message
       help
     end
@@ -22,9 +24,7 @@ module Logger
     end
 
     def help
-      puts ""
-      puts "Usage:"
-      puts "#{PROGRAM_NAME} [LOG FILE PATH]"
+      puts "Usage: #{$PROGRAM_NAME} [LOG FILE PATH]"
     end
   end
 end

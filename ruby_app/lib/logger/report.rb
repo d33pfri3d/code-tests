@@ -8,6 +8,7 @@ module Logger
     end
 
     def output
+      puts ""
       puts "== Page views =="
       page_views
       puts ""

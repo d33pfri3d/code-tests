@@ -14,7 +14,8 @@ module Logger
         line.chomp!
         # Split the IP address and visitedpage
         page, ip = line.split
-        # print " IP: #{ip} visited page #{page}"
+        # puts " IP: #{ip} visited page #{page}"
+        # add a new page view to the cache
         @cache.new_page_view(page, ip)
       end
     end

@@ -15,7 +15,10 @@ module Logger
 
     # Start method to take the path to the file and pass it to the parser module
     def start(log_path)
-      Parser.new(log_path).call
+      cache = Cache.new
+      Parser.new(log_path, cache).call
+      report = Report.new(cache)
+      report.output
     end
 
     def help

@@ -38,7 +38,9 @@ const App = () => {
     ) : error ? (
       <p>Error</p>
     ) : (
-      console.log(companies)
+      companies.map((company, index) => (
+        <Company key={index} company={company} />
+      ))
     );
 
   return (

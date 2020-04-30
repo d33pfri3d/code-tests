@@ -13,7 +13,6 @@ export const reducer = (state, action) => {
         error: null,
       };
     case "SEARCH_COMPANIES_SUCCESS":
-      console.log(`success ${JSON.stringify(action)}`);
       return {
         ...state,
         loading: false,

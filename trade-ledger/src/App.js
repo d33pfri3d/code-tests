@@ -1,20 +1,24 @@
 import React, { useReducer, useEffect } from "react";
+import fetchjsonp from "fetch-jsonp";
 import "./App.css";
 import Search from "./components/SearchBar";
 import { initialState, reducer } from "./store/reducer";
 
 const GUID = "b6242120-5bce-4b10-9839-d3045a7682da";
-const API_URL = `https://abr.business.gov.au/json/AbnDetails.aspx?abn=74172177893&callback=callback&guid=${GUID}`;
+const API_URL = `https://abr.business.gov.au/json/AbnDetails.aspx?abn=74172177893&guid=${GUID}`;
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     console.log("search");
-    fetch(API_URL)
+    fetchjsonp(API_URL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        dispatch({
+          type: "SEARCH_COMPANIES_SUCCESS",
+          payload: data,
+        });
       })
       .catch((error) => console.error(error));
   }, []);

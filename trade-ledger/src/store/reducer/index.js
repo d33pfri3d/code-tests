@@ -16,7 +16,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         loading: false,
-        movies: action.payload,
+        companies: action.payload,
       };
     case "SEARCH_COMPANIES_FAIL":
       return {

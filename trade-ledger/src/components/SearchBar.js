@@ -1,33 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
-class SearchBar extends React.Component {
-  state = {
-    searchTerm: "",
-    companies: [],
+const Search = ({ search }) => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearchInputChanges = (e) => {
+    setSearchValue(e.target.value);
   };
 
-  submitForm = (event) => {
-    event.preventDefault();
-
-    if (!this.state.searchTerm) {
-      alert("Search must not be blank");
-    }
+  const resetInputField = () => {
+    setSearchValue("");
   };
 
-  render() {
-    console.log(this.state);
-    return (
-      <>
-        <form onSubmit={this.submitForm}>
-          <input
-            type="text"
-            placeholder="Search..."
-            onChange={(e) => this.setState({ searchTerm: e.target.value })}
-          />
-        </form>
-      </>
-    );
-  }
-}
+  const callSearch = (e) => {
+    e.preventDefault();
+    search(searchValue);
+    resetInputField();
+  };
 
-export default SearchBar;
+  return (
+    <form>
+      <input
+        value={searchValue}
+        onChange={handleSearchInputChanges}
+        type="text"
+      />
+      <input onClick={callSearch} type="submit" value="Search" />
+    </form>
+  );
+};
+
+export default Search;

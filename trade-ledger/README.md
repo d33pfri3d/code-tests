@@ -1,68 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Task Spec
 
-## Available Scripts
+### Introduction
 
-In the project directory, you can run:
+This document describes a technical task for candidates applying for a React Software Engineering role at Trade Ledger. The purpose of the task is to get an understanding of your development approach. We appreciate you are taking time to have a crack on this. Please focus on the most important features to get a solution up and running. We are most interested in the approach, and look at quality over quantity.
 
-### `yarn start`
+### Technical Task
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Please read the requirements below and make a decision of which parts are most critical to implement. It's completely fine to not implement everything but please explain your decision. You are allowed to use external libraries if you feel that's appropriate.
+​
+The solution needs to include a quick readme file describing exact steps we should take to execute and test the application. We will not be able to test your project in a Windows environment, please target OS.X or Linux.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Requirements
 
-### `yarn test`
+A React application that meets the following user requirements:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- As a user, when I type in a company name I should be shown a list of matching companies.
+- As a user, when I select a company from the list, I should be shown the details of the company.
+- As a user, when I type in an ABN I should be shown the matching company.
 
-### `yarn build`
+API connectivity:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- For the above information, connect to an [external business lookup API](https://abr.business.gov.au/json/)
+- Your GUID for accessing the service is: b6242120-5bce-4b10-9839-d3045a7682da.
+- Please select the most appropriate service(s) to implement a solution.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Solution

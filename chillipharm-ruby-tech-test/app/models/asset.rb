@@ -10,4 +10,13 @@ class Asset < ApplicationRecord
   validates :filename, presence: true
   validates :library, presence: true
   validates :uploader, presence: true
+
+  def self.search(search, library)
+    if search
+      @assets = Asset.where(library_id: library).where("filename like ?", "%#{search.downcase}%")
+      # @assets = Asset.all
+    else
+      @assets = Asset.all
+    end
+  end
 end

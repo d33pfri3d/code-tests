@@ -7,7 +7,7 @@ class AssetsController < ApplicationController
     @asset = current_library.assets.find(params[:id])
 
     if @asset.update_attributes(asset_params)
-      flash[:notice] = 'Asset Updated'
+      flash[:notice] = "Asset Updated"
     else
       flash[:error] = "Could not update asset for the following reasons: #{@asset.errors.full_messages.to_sentence}"
     end
@@ -16,7 +16,8 @@ class AssetsController < ApplicationController
   end
 
   private
-    def asset_params
-      params.require(:asset).permit(:filename, :title)
-    end
+
+  def asset_params
+    params.require(:asset).permit(:filename, :title)
+  end
 end

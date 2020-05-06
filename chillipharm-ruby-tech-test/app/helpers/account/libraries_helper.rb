@@ -27,8 +27,9 @@ module Account::LibrariesHelper
     end
   end
 
-  def filter_link(filter, sort, search, section, library, object=nil)
+  def filter_link(filter, sort, search, section, library, object = nil)
     args = {}
+
     args[:filter] = filter
 
     if sort.present?
@@ -42,7 +43,7 @@ module Account::LibrariesHelper
     section_link(library, section, args, object)
   end
 
-  def sort_link(sort, filter, search, section, library, object=nil)
+  def sort_link(sort, filter, search, section, library, object = nil)
     args = {}
     args[:sort] = sort
 
@@ -57,7 +58,7 @@ module Account::LibrariesHelper
     section_link(library, section, args, object)
   end
 
-  def section_link(library, section, args, object=nil)
+  def section_link(library, section, args, object = nil)
     case section
     when "library"
       library_path(library, args)

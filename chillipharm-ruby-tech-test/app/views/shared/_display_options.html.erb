@@ -1,10 +1,10 @@
 <div id="library-display-options" class="display-options no-pad">
     <ul>
       <li>
-        <a class="list <%= params['display_assets'].eql?('display_assets_as_list') ? 'active' : '' %>" href="?display_assets=display_assets_as_list">
+        <%= link_to request.url, request.params.merge(display_assets: 'display_assets_as_list') do %>
           <i class="fa fa-align-justify"></i>
           <span>List</span>
-        </a>
+        <% end %>
       </li>
       <li>
         <a class="grid <%= (params['display_assets'].eql?('display_assets_as_grid') || params['display_assets'].nil?) ? 'active' : '' %>" href="?display_assets=display_assets_as_grid">

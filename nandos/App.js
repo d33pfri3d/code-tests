@@ -8,30 +8,19 @@ import {
   StatusBar,
   FlatList,
   WebView,
-  Linking
+  Linking,
+  Animated
 } from 'react-native';
+import RestaurantCard from './components/RestaurantCard';
 
-const renderCard = ({item}) => {
-  return (
-    <View style={styles.cardContainer}>
-      <Text>{item.name}</Text>
-
-      <View>
-        <Text>{item.geo.address.streetAddress}</Text>
-        <Text>{item.geo.address.postalCode}</Text>
-      </View>
-
-      <View>
-        <Text style={{color: 'blue'}}
-          onPress={() => Linking.openURL(item.url)}>
-          View in Browser
-        </Text>
-      </View>
-    </View>
-  );
-};
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
 const Restaurants = () => {
+  
+  const y = new Animated.Value(0);
+  const onScroll = Animated.event([{ nativeEvent: { contentOffset: {y} }}], { useNativeDriver: true } )
+
+
   const flatListRef = useRef(null);
   const [hasErrors, setErrors] = useState(false);
   const [restaurantList, setRestaurantList] = useState();
@@ -43,11 +32,13 @@ const Restaurants = () => {
         .catch((err) => setErrors(err));
   }, []);
   return (
-    <FlatList
+    <AnimatedFlatList
+      scrollEventThrottle={16}
         ref={flatListRef}
         data={restaurantList}
-        renderItem={renderCard}
+        renderItem={({item, index}) => ( <RestaurantCard {...{item, index, y}} /> )}
         keyExtractor={(item) => item.index }
+        {...{onScroll}}
       />
   );
 };
@@ -58,7 +49,9 @@ class App extends React.Component {
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
+          <View style={styles.scrollView}>
             <Restaurants />
+          </View>
         </SafeAreaView>
       </>
     );
@@ -67,14 +60,8 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: '#DDD',
-    padding: 20
+    backgroundColor: 'black'
   },
-  cardContainer: {
-    backgroundColor: 'white',
-    padding: 10,
-    marginBottom: 20
-  }
 });
 
 export default App;

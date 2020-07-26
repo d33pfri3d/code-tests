@@ -33,7 +33,8 @@ const Restaurants = () => {
   }, []);
   return (
     <AnimatedFlatList
-      scrollEventThrottle={16}
+        bounce={false}
+        scrollEventThrottle={16}
         ref={flatListRef}
         data={restaurantList}
         renderItem={({item, index}) => ( <RestaurantCard {...{item, index, y}} /> )}
@@ -60,7 +61,7 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: 'black'
+    backgroundColor: '#e1e4e8'
   },
 });
 

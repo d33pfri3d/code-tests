@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,34 +6,32 @@ import {
   View,
   Text,
   StatusBar,
+  FlatList,
 } from 'react-native';
 
-const Card = () => {
-  return <View></View>;
+const renderCard = ({item}) => {
+  return (
+  <Text>{item.name}</Text>
+);
 };
 
 const Restaurants = () => {
+  const flatListRef = useRef(null);
   const [hasErrors, setErrors] = useState(false);
-  const [data, setData] = useState({});
+  const [restaurantList, setRestaurantList] = useState();
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(
-        'https://storage.googleapis.com/nandos-engineering-public/coding-challenge-rn/restaurantlist.json',
-      );
-      res
-        .json()
-        .then((res) => setData(res))
+      fetch('https://storage.googleapis.com/nandos-engineering-public/coding-challenge-rn/restaurantlist.json')
+        .then(res => res.json())
+        .then(res => setRestaurantList(res.data.restaurant.items))
         .catch((err) => setErrors(err));
-    }
-
-    fetchData();
-  });
-
+  }, []);
   return (
-    <View>
-      <Text>{JSON.stringify(data)}</Text>
-    </View>
+    <FlatList
+        ref={flatListRef}
+        data={restaurantList}
+        renderItem={renderCard}
+      />
   );
 };
 
@@ -57,10 +55,6 @@ class App extends React.Component {
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: 'white',
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
   },
   body: {
     backgroundColor: 'white',

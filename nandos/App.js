@@ -7,12 +7,28 @@ import {
   Text,
   StatusBar,
   FlatList,
+  WebView,
+  Linking
 } from 'react-native';
 
 const renderCard = ({item}) => {
   return (
-  <Text>{item.name}</Text>
-);
+    <View style={styles.cardContainer}>
+      <Text>{item.name}</Text>
+
+      <View>
+        <Text>{item.geo.address.streetAddress}</Text>
+        <Text>{item.geo.address.postalCode}</Text>
+      </View>
+
+      <View>
+        <Text style={{color: 'blue'}}
+          onPress={() => Linking.openURL(item.url)}>
+          View in Browser
+        </Text>
+      </View>
+    </View>
+  );
 };
 
 const Restaurants = () => {
@@ -31,6 +47,7 @@ const Restaurants = () => {
         ref={flatListRef}
         data={restaurantList}
         renderItem={renderCard}
+        keyExtractor={(item) => item.index }
       />
   );
 };
@@ -41,11 +58,7 @@ class App extends React.Component {
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
             <Restaurants />
-          </ScrollView>
         </SafeAreaView>
       </>
     );
@@ -54,10 +67,13 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: 'white',
+    backgroundColor: '#DDD',
+    padding: 20
   },
-  body: {
+  cardContainer: {
     backgroundColor: 'white',
+    padding: 10,
+    marginBottom: 20
   }
 });
 

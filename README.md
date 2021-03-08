@@ -4,6 +4,7 @@ I've decided to share some of the code tests / challenges that I have been asked
 
 | Company | Technology | Description |
 | --- | --- | --- |
+| [Facebook](/facebook/) | Javascript| Misc
 | [Nandos](/nandos/) | React Native, Hooks, Animation | Animated List |
 | [Sparrho](/aces-up/) | JavaScript | Calculate % of drawing 4 aces from shuffle |
 | [ChilliPharm](/chillipharm-ruby-tech-test/) | Ruby on Rails | Sorting search results |
